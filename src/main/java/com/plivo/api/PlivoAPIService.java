@@ -240,6 +240,49 @@ public interface PlivoAPIService {
 
   @GET("Account/{authId}/Message/{id}/")
   Call<Message> messageGet(@Path("authId") String authId, @Path("id") String id);
+  //Powerpack
+  @POST("Account/{authId}/Powerpack/")
+  Call<PowerpackResponse> createPowerpack(@Path("authId") String authId, @Body PowerpackCreator powerpackCreator);
+
+  @GET("Account/{authId}/Powerpack/{uuid}/")
+  Call<Powerpack> powerpackGet(@Path("authId") String authId, @Path("uuid") String uuid);
+
+  @GET("Account/{authId}/Powerpack/")
+  Call<ListResponse<Powerpack>> powerpackList(@Path("authId") String authId,
+    @QueryMap Map<String, Object> powerpackListRequest);
+
+  @POST("Account/{authId}/Powerpack/{uuid}/")
+  Call<PowerpackUpdateResponse> powerpackUpdate(@Path("authId") String authId,
+  @Path("uuid") String uuid, @Body PowerpackUpdater powerpackUpdater);
+  
+  @DELETE("Account/{authId}/Powerpack/{uuid}/")
+  Call<ResponseBody> powerpackDeleter(@Path("authId") String authId, @Path("uuid") String uuid, @Body powerpackDeleter powerpackDelete);
+
+  @GET("Account/{authId}/NumberPool/{uuid}/Number/")
+  Call<ListResponse<NumberPool>> powerpackNumberList(@Path("authId") String authId, @Path("uuid") String uuid, 
+  @QueryMap Map<String,Object> powerpackNumberListRequest);
+
+  @GET("Account/{authId}/NumberPool/{uuid}/Shortcode/")
+  Call<ListResponse<Shortcode>> powerpackShortcodeList(@Path("authId") String authId, @Path("uuid") String uuid, 
+  @QueryMap Map<String,Object> powerpackShortcodeListRequest);
+
+  @GET("Account/{authId}/NumberPool/{uuid}/Number/{number}/")
+  Call<NumberPool> powerpackFindNumberGet(@Path("authId") String authId, @Path("uuid") String uuid, @Path("number") String number);
+
+  @GET("Account/{authId}/NumberPool/{uuid}/Shortcode/{shortcode}/")
+  Call<Shortcode> powerpackFindShortcodeGet(@Path("authId") String authId, @Path("uuid") String uuid, @Path("shortcode") String shortcode);
+
+  @POST("Account/{authId}/NumberPool/{uuid}/Number/{number}/")
+  Call<NumberPool> powerpackAddNumberCreate(@Path("authId") String authId, @Path("uuid") String uuid, @Path("number") String number);
+
+  @DELETE("Account/{authId}/NumberPool/{uuid}/Number/{number}/")
+  Call<NumberPool> powerpackNumberDelete(@Path("authId") String authId, @Path("uuid") String uuid, @Path("number") String number, @Body PowerpackNumberDeleter numberDeleter);
+
+
+
+
+
+
 
   // Number
 
